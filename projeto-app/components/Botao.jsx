@@ -1,8 +1,8 @@
 import { Pressable, View , StyleSheet , Text } from "react-native";
 
-const Botao = function ({texto, onPressOut}) {
+const Botao = function ({texto, onPressOut, cor}) {
     return <Pressable
-    style={styles.botao}
+    style={cor === "a"? styles.botaoA: styles.botao}
     onPressOut={onPressOut}
     >
         <View>
@@ -13,9 +13,24 @@ const Botao = function ({texto, onPressOut}) {
 
 const styles = StyleSheet.create({
     botao: {
-        width: 200,
-        height: 50,
-        backgroundColor: 'red'
+        display: `flex`,
+        alignItems: `center`,
+        justifyContent: 'center',
+        width: 98.3,
+        height: 98.3,
+        borderColor: 'black',
+        borderWidth: 1,
+        backgroundColor: 'gray'
+    },
+    botaoA: {
+        display: `flex`,
+        alignItems: `center`,
+        justifyContent: 'center',
+        width: 98.3,
+        height: 98.3,
+        borderColor: 'black',
+        borderWidth: 1,
+        backgroundColor: 'yellow'
     }
   });
 
