@@ -50,13 +50,18 @@ const App = () => {
         }
     ])
 
+    const completar = function(id){
+        var list = [...lista]
+        list[id].completo = !list[id].completo
+        setLista(list)
+    }
     
     return(
     <View style={styles.container}>
         <Text style={styles.titulo}>Lista de tarefas</Text>
         <FlatList
             data={lista}
-            renderItem={({item}) => <Text style={item.completo? styles.itemC: styles.itemIn}>{item.tarefa}</Text>} 
+            renderItem={({item}) => <Text style={item.completo? styles.itemC: styles.itemIn} onPress={() => completar(item.id)}>{item.tarefa}</Text>} 
             keyExtractor={item => item.id}
         />
     </View>

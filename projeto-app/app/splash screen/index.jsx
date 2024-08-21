@@ -7,7 +7,7 @@ const App = () => {
         <View style={styles.container}>
         <LinearGradient
         // Background Linear Gradient
-        colors={['#0367A6', '#B3DAF2r']}
+        colors={['rgb(3,103,166)', 'rgb(179, 218, 242)']}
         style={styles.background}
       />
         <Image
