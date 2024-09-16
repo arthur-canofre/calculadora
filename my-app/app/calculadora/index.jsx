@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
-import BtBack from '../../components/BtBack';
+import Header from '../../components/Header';
 
 // Componente funcional principal
 const Calc = () => {
@@ -26,38 +26,40 @@ const Calc = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <BtBack/>
-      <Text>Calcula</Text>
-      <TextInput
-      onChangeText={onChangeText}
-      value={number}
-      placeholder='insira o numero aqui'
-      keyboardType='numeric'
-      />
-      <TextInput
-      onChangeText={onChangeText2}
-      value={number2}
-      placeholder='insira o numero aqui'
-      keyboardType='numeric'
-      />
-      <Button
-        title='+'
-        onPress={() => soma()}
-      />
-      <Button
-      title='-'
-      onPress={() => sub()}
-      />
-      <Button
-      title='x'
-      onPress={() => mult()}
-      />
-      <Button
-      title='/'
-      onPress={() => divi()}
-      />
-      <Text>{resultado}</Text>
+    <View>
+      <Header titulo={'Calculadora 1'}/>
+      <View style={styles.container}>
+        <Text>Calcula</Text>
+        <TextInput
+        onChangeText={onChangeText}
+        value={number}
+        placeholder='insira o numero aqui'
+        keyboardType='numeric'
+        />
+        <TextInput
+        onChangeText={onChangeText2}
+        value={number2}
+        placeholder='insira o numero aqui'
+        keyboardType='numeric'
+        />
+        <Button
+          title='+'
+          onPress={() => soma()}
+        />
+        <Button
+        title='-'
+        onPress={() => sub()}
+        />
+        <Button
+        title='x'
+        onPress={() => mult()}
+        />
+        <Button
+        title='/'
+        onPress={() => divi()}
+        />
+        <Text>{resultado}</Text>
+      </View>
     </View>
   );
 };
@@ -65,7 +67,7 @@ const Calc = () => {
 // Estilos para o componente
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   }

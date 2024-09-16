@@ -1,30 +1,32 @@
 import React from "react";
 import { StyleSheet, Image, View, Text } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-import BtBack from "../../components/BtBack";
+import Header from "../../components/Header";
 
 const App = () => {
     return(
-        <View style={styles.container}>
+      <View style={styles.tudo}>
+        <Header titulo={"splash screen"}/>
         <LinearGradient
-        // Background Linear Gradient
-        colors={['rgb(3,103,166)', 'rgb(179, 218, 242)']}
-        style={styles.background}
-      />
-      <BtBack/>
-        <Image
-        style={styles.img}
-        source={{
-          uri: 'https://dcdn.mitiendanube.com/stores/002/482/895/products/la-ele1-0503b4627bcb11dfa816908105064696-1024-1024.png',
-        }}
+          // Background Linear Gradient
+          colors={['rgb(3,103,166)', 'rgb(179, 218, 242)']}
+          style={styles.background}
         />
-        </View>
+          <View style={styles.container}>
+          <Image
+          style={styles.img}
+          source={{
+            uri: 'https://dcdn.mitiendanube.com/stores/002/482/895/products/la-ele1-0503b4627bcb11dfa816908105064696-1024-1024.png',
+          }}
+          />
+          </View>
+      </View>
     )
 }   
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      display:'flex',
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -38,6 +40,9 @@ const styles = StyleSheet.create({
         right: 0,
         top: 0,
         height: '100%',
+      },
+      tudo: {
+        height: '100%'
       }
   });
 
