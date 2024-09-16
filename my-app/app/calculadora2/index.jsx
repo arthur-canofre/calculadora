@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import Botao from '../../components/Botao'
+import BtBack from "../../components/BtBack";
 
 const Calc2 = () =>{
 
@@ -49,6 +50,7 @@ const Calc2 = () =>{
         <View
             style={styles.container}
         >
+            <BtBack/>
             <Text>{num2}</Text>
             <Text>{ope + " " + num}</Text>
             <View style={styles.teclado}>

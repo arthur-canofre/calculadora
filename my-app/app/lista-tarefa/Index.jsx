@@ -1,5 +1,6 @@
 import React, { useState, } from "react";
 import { StyleSheet, View, FlatList, Text, Button } from "react-native";
+import BtBack from "../../components/BtBack";
 
 const styles = StyleSheet.create({
     container: {
@@ -58,6 +59,7 @@ const App = () => {
     
     return(
     <View style={styles.container}>
+        <BtBack/>
         <Text style={styles.titulo}>Lista de tarefas</Text>
         <FlatList
             data={lista}

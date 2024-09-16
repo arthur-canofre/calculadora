@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TextInput, View, Text, Pressable, StyleSheet, SafeAreaView} from 'react-native'
+import BtBack from "../../components/BtBack";
 
 const styles = StyleSheet.create({
     container: {
@@ -63,6 +64,7 @@ export default SignUp = () => {
 
     return(
             <SafeAreaView style={styles.container}>
+                <BtBack/>
                 <View style={styles.containerTitle}>
                     <Text style={styles.title}>Sign Up</Text>
                 </View>

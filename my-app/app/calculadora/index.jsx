@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
+import BtBack from '../../components/BtBack';
 
 // Componente funcional principal
 const Calc = () => {
@@ -26,6 +27,7 @@ const Calc = () => {
 
   return (
     <View style={styles.container}>
+      <BtBack/>
       <Text>Calcula</Text>
       <TextInput
       onChangeText={onChangeText}

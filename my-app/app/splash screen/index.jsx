@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Image, View, Text } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
+import BtBack from "../../components/BtBack";
 
 const App = () => {
     return(
@@ -10,6 +11,7 @@ const App = () => {
         colors={['rgb(3,103,166)', 'rgb(179, 218, 242)']}
         style={styles.background}
       />
+      <BtBack/>
         <Image
         style={styles.img}
         source={{
