@@ -20,10 +20,10 @@ const style = StyleSheet.create({
     }
 })
 
-export default Header = ({titulo}) => {
+export default Header = ({titulo, link}) => {
     return(
         <View style={style.container}>
-            <BtBack/>
+            <BtBack link={link}/>
             <Text style={style.titulo}>{titulo}</Text>
         </View>
     )

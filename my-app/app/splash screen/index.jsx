@@ -31,15 +31,17 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     img: {
+        position: 'absolute',
         height: 250,
         width: 400,
+        top: 200
     },
     background: {
         position: 'absolute',
         left: 0,
         right: 0,
-        top: 0,
-        height: '100%',
+        top: 60,
+        height: '93%',
       },
       tudo: {
         height: '100%'

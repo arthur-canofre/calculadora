@@ -16,8 +16,8 @@ const style = StyleSheet.create({
     }
 })
 
-export default BtBack => {
+export default BtBack = ({ link }) => {
     return(
-    <Link href={'/'} style={style.botao}>Voltar</Link>
+    <Link href={`/${link}`} style={style.botao}>Voltar</Link>
     )
 }
