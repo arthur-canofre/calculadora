@@ -23,7 +23,7 @@ const style = StyleSheet.create({
 export default Header = ({titulo, link}) => {
     return(
         <View style={style.container}>
-            <BtBack link={link}/>
+            <BtBack link={typeof(link) === "undefined"? "" : link}/>
             <Text style={style.titulo}>{titulo}</Text>
         </View>
     )

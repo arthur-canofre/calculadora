@@ -28,7 +28,8 @@ export default App => {
         {nome: 'registro', link: '/registro', id: '3'},
         {nome: 'seletor', link: '/seletor', id: '4'},
         {nome: 'Splash Screen', link: '/splash screen', id: '5'},
-        {nome: 'Sobre Mim', link:'/sobreMim'}
+        {nome: 'Sobre Mim', link:'/sobreMim'},
+        {nome: 'iFome', link:'/iFome'}
     ]
 
     return(
