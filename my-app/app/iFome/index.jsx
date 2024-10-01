@@ -1,5 +1,5 @@
 import React, {  useState, useContext } from "react";
-import { View, Text, Button, FlatList, StyleSheet, Image } from 'react-native'
+import { SafeAreaView, View, Text, Button, FlatList, StyleSheet, Image } from 'react-native'
 import { AppContext } from "../../scripts/AppContext";
 import { Link } from "expo-router"
 import Header from "../../components/Header";
@@ -14,6 +14,12 @@ const style = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 15,
+    },
+    carrinho: {
+        color: 'blue',
+        textDecorationColor: 'blue',
+        textDecorationStyle: 'solid',
+        
     }
 })
 
@@ -30,14 +36,16 @@ export default IFome = () => {
     const comprar = function (id){
         const list = [...lista]
         list.push(dados[id])
+        list[list.length - 1].id = list.length
         setLista(list)
+        console.log(lista)
     }
 
     return(
         <View>
             <Header titulo={"iFome"}/>
-            <View>
-                <Link href={'./carrinho'}>Acessar carrinho</Link>
+            <View style={style.carrinho}>
+                <Link style={style.carrinho} href={'./carrinho'}>Carrinho</Link>
                 <FlatList
                     data={dados}
                     renderItem={({item}) => <View style={style.itemContainer}>
@@ -50,7 +58,7 @@ export default IFome = () => {
                             <Text>{item.nome}</Text>
                             <Text>{item.restaurante}</Text>
                             <Text>{item.preco}</Text>
-                            <Button title="comprar" onPress={comprar(item.id)}/>
+                            <Button title="comprar" onPress={() => comprar(item.id)}/>
                         </View>
                     </View>}
                     keyExtractor={item => item.id}

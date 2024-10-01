@@ -16,9 +16,20 @@ export default Carrinho = () => {
             <View>
                 <FlatList
                 data={lista}
-                renderItem={({item}) => <Text>{item.nome}</Text>}
+                renderItem={({item}) => <View>
+                    <View>
+                        <Text>{item.nome}</Text>
+                        <Text>{item.restaurante}</Text>
+                    </View>
+                    <Text>{item.preco}</Text>
+                </View>}
+                keyExtractor={item => item.id}
                 />
             </View>
+            <View>
+                
+            </View>
+
         </View>
     )
 }

@@ -5,7 +5,7 @@ export const AppProvider = ({children}) => {
     const [lista, setLista] = useState([])
 
     return(
-        <AppContext.Provider value={[lista, setLista]}>
+        <AppContext.Provider value={{lista, setLista}}>
             {children}
         </AppContext.Provider>
     )
