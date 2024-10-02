@@ -18,7 +18,7 @@ const style = StyleSheet.create({
     carrinho: {
         color: 'blue',
         textDecorationColor: 'blue',
-        textDecorationStyle: 'solid',
+        textDecorationLine: 'underline'
         
     }
 })
@@ -26,9 +26,9 @@ const style = StyleSheet.create({
 export default IFome = () => {
 
     const dados = [
-        {id: "0", nome: "Donut", preco: "R$15,00", restaurante: "Usina Nuclear de Springfield", img: "https://static.wikia.nocookie.net/simpsons/images/a/aa/Rosquinha.jpg/revision/latest?cb=20101015120457&path-prefix=pt" },
-        {id: "1", nome: "Sanduiche Perfeito", preco: "R$30,0", restaurante: "Casa na arvore", img: "https://149455152.v2.pressablecdn.com/wp-content/uploads/2017/04/jake-the-dog-perfect-sandwich.jpg" },
-        {id: "2", nome: "Hamburguer de siri", preco: "R$50,00", restaurante: "siri cascudo", img: "https://static.wikia.nocookie.net/food-ficcao/images/c/c7/Burguer.png/revision/latest/scale-to-width-down/243?cb=20140313210717&path-prefix=pt-br" },
+        {id: "0", nome: "Donut", preco: "15.00", restaurante: "Usina Nuclear de Springfield", img: "https://static.wikia.nocookie.net/simpsons/images/a/aa/Rosquinha.jpg/revision/latest?cb=20101015120457&path-prefix=pt" },
+        {id: "1", nome: "Sanduiche Perfeito", preco: "30.00", restaurante: "Casa na arvore", img: "https://149455152.v2.pressablecdn.com/wp-content/uploads/2017/04/jake-the-dog-perfect-sandwich.jpg" },
+        {id: "2", nome: "Hamburguer de siri", preco: "50.00", restaurante: "siri cascudo", img: "https://static.wikia.nocookie.net/food-ficcao/images/c/c7/Burguer.png/revision/latest/scale-to-width-down/243?cb=20140313210717&path-prefix=pt-br" },
     ]
 
     const {lista, setLista} = useContext(AppContext)
@@ -57,7 +57,7 @@ export default IFome = () => {
                         <View>
                             <Text>{item.nome}</Text>
                             <Text>{item.restaurante}</Text>
-                            <Text>{item.preco}</Text>
+                            <Text>R${item.preco}</Text>
                             <Button title="comprar" onPress={() => comprar(item.id)}/>
                         </View>
                     </View>}
