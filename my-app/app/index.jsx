@@ -29,7 +29,8 @@ export default App => {
         {nome: 'seletor', link: '/seletor', id: '4'},
         {nome: 'Splash Screen', link: '/splash screen', id: '5'},
         {nome: 'Sobre Mim', link:'/sobreMim'},
-        {nome: 'iFome', link:'/iFome'}
+        {nome: 'iFome', link:'/iFome'},
+        {nome: 'camera', link:'/camera'},
     ]
 
     return(
