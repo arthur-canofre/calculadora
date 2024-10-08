@@ -1,5 +1,5 @@
 import React,{useState, useRef} from "react";
-import { View, Text, StyleSheet, Image, Button, Linking } from "react-native";
+import { View, Text, StyleSheet, Image, Button, Linking, Pressable, Modal } from "react-native";
 import { CameraView, useCameraPermissions } from 'expo-camera'
 import * as MediaLibrary from 'expo-media-library'
 
@@ -13,7 +13,6 @@ const style = StyleSheet.create({
         textAlign: 'center'
     },
     camera: {
-        //flex: 1,
         height: '100%',
         width: '100%',
         display: 'flex',
@@ -21,14 +20,34 @@ const style = StyleSheet.create({
         alignItems: 'center'
     },
     container: {
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // height: '100%'
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%'
     },
     img: {
         width: '100%',
         height: '90%'
+    },
+    btCam: {
+        width: 80,
+        height: 80,
+        borderRadius: 50,
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 4,
+        marginRight: 80,
+        marginBottom: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    containerBt: {
+        flexDirection: 'row',
+        width: '100%'
+    },
+    imgBt: {
+        width: 65,
+        height: 65, 
     }
 })
 
@@ -51,7 +70,7 @@ export default  function Camera() {
                 <Text style={style.textPermissao}>Mim de permissao de usar a camera</Text>
                 <Button
                     title="pedir permissão"
-                    onPress={pedirPermissao}
+                    onPressOut={pedirPermissao}
                 />
             </View>
         )
@@ -79,6 +98,20 @@ export default  function Camera() {
         setFoto(null)
     }
 
+    const abrirLink = () =>{
+        Linking.openURL(link)
+        setLink(null)
+    }
+
+    const confirmLink = (link) =>{
+        console.log(link)
+        return(
+            <View style={style.container}>
+                <Pressable onPress={abrirLink} ><Text>{link}</Text></Pressable>
+            </View>
+        )
+    }
+
     return(
         <View style={style.container}>
             
@@ -94,11 +127,11 @@ export default  function Camera() {
                 barcodeScannerSettings={{
                    barcodeTypes: ['qr'] 
                 }}
-                onBarcodeScanned={(code) => Linking.openURL(code.data)}
+                onBarcodeScanned={(code) => confirmLink(code.data)}
             >
-                <View>
-                    <Button title="tira" onPress={tirarFoto}/>
-                    <Button title="vira" onPress={viraCam}/>
+                <View style={style.containerBt}>
+                    <Pressable style={style.btCam} onPress={viraCam}><Image style={style.imgBt} source={{uri: 'https://cdn-icons-png.flaticon.com/512/10728/10728618.png'}}/></Pressable>
+                    <Pressable style={style.btCam} onPress={tirarFoto}></Pressable>
                 </View>
             </CameraView>
             }
