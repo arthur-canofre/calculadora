@@ -56,6 +56,8 @@ export default  function Camera() {
     const [permissaoSalvar, pedirPermissaoSalvar] = MediaLibrary.usePermissions()
     const [foto, setFoto] = useState(null)
     const [ladoCam, setLadoCam] = useState('back')
+    const [visivel, setVisivel] = useState(false)
+    const [link, setLink] = useState(null)
     const cameraRef = useRef(null)
 
     if(!permissao){
@@ -103,18 +105,14 @@ export default  function Camera() {
         setLink(null)
     }
 
-    const confirmLink = (link) =>{
-        console.log(link)
-        return(
-            <View style={style.container}>
-                <Pressable onPress={abrirLink} ><Text>{link}</Text></Pressable>
-            </View>
-        )
-    }
 
     return(
         <View style={style.container}>
-            
+        <Modal 
+            visible= {visivel}
+        >
+            <Button title="fds" onPress={() => setVisivel(false)}/>
+        </Modal>
             { foto ? <View style={style.container}> 
                 <Image style={style.img} source={{uri: foto.uri}} resizeMode="contain"/> 
                 <Button title="Salva" onPress={salvarFoto}/>
@@ -127,7 +125,7 @@ export default  function Camera() {
                 barcodeScannerSettings={{
                    barcodeTypes: ['qr'] 
                 }}
-                onBarcodeScanned={(code) => confirmLink(code.data)}
+                onBarcodeScanned={(code) => [setLink(code.data), setVisivel(true)]}
             >
                 <View style={style.containerBt}>
                     <Pressable style={style.btCam} onPress={viraCam}><Image style={style.imgBt} source={{uri: 'https://cdn-icons-png.flaticon.com/512/10728/10728618.png'}}/></Pressable>
