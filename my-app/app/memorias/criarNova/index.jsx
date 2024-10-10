@@ -12,7 +12,7 @@ export default Memoria = () => {
     
     return(
         <SafeAreaView>
-
+            
         </SafeAreaView>
     )
 }

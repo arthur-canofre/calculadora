@@ -10,32 +10,39 @@ const style = StyleSheet.create({
 export default CriarMemoria = () => {
 
     const [dados, setDados] = useState(null)
-    useEffect(async () => {
-        const jsonValue = await AsyncStorage.getItem('memories')
-        if(jsonValue != null){
-            try{
-                setDados(jsonValue != null ? JSON.parse(jsonValue) : null)
-            }catch(e){
-                console.error(e)
-            }
-        }else{
-            try{
-                const value = JSON.stringify([])
-                await AsyncStorage.setItem('memories', value)
-            }catch(e){
-                console.error(e)
+    useEffect(() => {
+        const getMemoria = async () => {
+            const jsonValue = await AsyncStorage.getItem('memories')
+            if(jsonValue !== null){
+                try{
+                    setDados(JSON.parse(jsonValue))
+                    console.log('receba')
+                }catch(e){
+                    console.error(e)
+                }
+                
+            }else{
+                try{
+                    const value = JSON.stringify([])
+                    await AsyncStorage.setItem('memories', value)
+                    const newJsonValue = await AsyncStorage.getItem('memories')
+                    setDados(JSON.parse(newJsonValue))
+                    console.log('nao receba')
+                }catch(e){
+                    console.error(e)
+                }
             }
         }
+        getMemoria()
     }, [])
 
     return(
         <SafeAreaView>
             <Header titulo='Memorias'/>
             <View>
-                <FlatList
-                    data={dados}
-                    renderItem={({item}) => <Text>{}</Text>}
-                />
+                { dados == []? <Text>Parece que você nao criou nenhuma memoria ainda</Text>:
+                console.log(dados)
+                }
             </View>
         </SafeAreaView>
     )
