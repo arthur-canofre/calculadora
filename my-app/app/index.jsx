@@ -31,6 +31,7 @@ export default App => {
         {nome: 'Sobre Mim', link:'/sobreMim'},
         {nome: 'iFome', link:'/iFome'},
         {nome: 'camera', link:'/camera'},
+        {nome: 'memorias', link: '/memorias'}
     ]
 
     return(
