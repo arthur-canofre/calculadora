@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Text, View, StyleSheet, SafeAreaView, FlatList, Button } from "react-native";
+import { Link } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Header from '../../components/Header'
 
@@ -13,10 +14,10 @@ export default CriarMemoria = () => {
     useEffect(() => {
         const getMemoria = async () => {
             const jsonValue = await AsyncStorage.getItem('memories')
-            if(jsonValue !== null){
+            if(jsonValue != null){
                 try{
-                    setDados(JSON.parse(jsonValue))
-                    console.log('receba')
+                    const value = JSON.parse(jsonValue)
+                    setDados(value)
                 }catch(e){
                     console.error(e)
                 }
@@ -26,8 +27,8 @@ export default CriarMemoria = () => {
                     const value = JSON.stringify([])
                     await AsyncStorage.setItem('memories', value)
                     const newJsonValue = await AsyncStorage.getItem('memories')
-                    setDados(JSON.parse(newJsonValue))
-                    console.log('nao receba')
+                    const newValue = JSON.parse(newJsonValue)
+                    setDados(newValue)
                 }catch(e){
                     console.error(e)
                 }
@@ -40,10 +41,17 @@ export default CriarMemoria = () => {
         <SafeAreaView>
             <Header titulo='Memorias'/>
             <View>
-                { dados == []? <Text>Parece que você nao criou nenhuma memoria ainda</Text>:
-                console.log(dados)
+                <FlatList
+                data={dados}
+                renderItem={({item}) => 
+                    <View>
+                        <Text>{item.nome}</Text>
+                    </View>
                 }
+                ListEmptyComponent={() => <Text>Parece que voce ainda nao criou nenhuma memoria :c</Text>}
+                />
             </View>
+            <Link href={"./criarNova"}><Text>Receba</Text></Link>
         </SafeAreaView>
     )
 }

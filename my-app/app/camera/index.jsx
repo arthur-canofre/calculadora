@@ -67,6 +67,7 @@ export default  function Camera() {
     }
 
     if(!permissao.granted){
+        console.log(`recebo`)
         return(
             <View style={style.containerPerm}>
                 <Text style={style.textPermissao}>Mim de permissao de usar a camera</Text>
@@ -111,7 +112,7 @@ export default  function Camera() {
         <Modal 
             visible= {visivel}
         >
-            <Button title="fds" onPress={() => setVisivel(false)}/>
+            <Pressable onPress={abrirLink()}><Text>{link}</Text></Pressable>
         </Modal>
             { foto ? <View style={style.container}> 
                 <Image style={style.img} source={{uri: foto.uri}} resizeMode="contain"/> 
