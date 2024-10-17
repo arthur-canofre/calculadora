@@ -7,7 +7,24 @@ import Header from "../../../components/Header";
 const style = StyleSheet.create({
     foto: {
         width: 180,
-        height: 180
+        height: 180,
+        borderColor: 'whitesmoke',
+        borderRadius: 6,
+        borderWidth: 6,
+    },
+    container: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 10
+    },
+    input: {
+        borderColor: 'black',
+        borderRadius: 3,
+        borderWidth: 3,
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        width: 300
     }
 })
 
@@ -46,30 +63,43 @@ export default Memoria = () => {
         memorias.push(formMemo)
         const value = JSON.stringify(memorias)
         await AsyncStorage.setItem('memories', value)
+        setformMemo({
+            titulo: '',
+            data: '',
+            local: '',
+            descricao: '',
+            fotoURI: ''
+        })
     }
     
     return(
         <SafeAreaView>
             <Header titulo="criar nova memoria" link="memorias"/>
-            <TextInput
-                onChangeText={(value) => {onChangeText(value, 'titulo')}}
-                placeholder="Escreva o titulo"
-            />
-             <TextInput
-                onChangeText={(value) => {onChangeText(value, 'data')}}
-                placeholder="Escreva quando foi essa memoria"
-            />
-             <TextInput
-                onChangeText={(value) => {onChangeText(value, 'local')}}
-                placeholder="Escreva onde essa memoria ocorreu"
-            />
-             <TextInput
-                onChangeText={(value) => {onChangeText(value, 'descricao')}}
-                placeholder="Escreva uma descricao dessa memoria"
-            />
-            <Button title="Pegar foto" onPress={pickImage}/>
-            {formMemo.fotoURI && <Image source={{ uri: formMemo.fotoURI }} style={style.foto}/>}
-            <Button title="Enviar memoria" onPress={criarMemo}/>
+            <View style={style.container}>
+                <TextInput
+                    style={style.input}
+                    onChangeText={(value) => {onChangeText(value, 'titulo')}}
+                    placeholder="Escreva o titulo"
+                />
+                <TextInput
+                    style={style.input}
+                    onChangeText={(value) => {onChangeText(value, 'data')}}
+                    placeholder="Escreva quando foi essa memoria"
+                />
+                <TextInput
+                    style={style.input}
+                    onChangeText={(value) => {onChangeText(value, 'local')}}
+                    placeholder="Escreva onde essa memoria ocorreu"
+                />
+                <TextInput
+                    style={style.input}
+                    onChangeText={(value) => {onChangeText(value, 'descricao')}}
+                    placeholder="Escreva uma descricao dessa memoria"
+                />
+                <Button title="Pegar foto" onPress={pickImage}/>
+                {formMemo.fotoURI && <Image source={{ uri: formMemo.fotoURI }} style={style.foto}/>}
+                <Button title="Enviar memoria" onPress={criarMemo}/>
+            </View>
         </SafeAreaView>
     )
 }
